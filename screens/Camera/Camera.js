@@ -9,13 +9,16 @@ export default class MyCamera extends React.Component {
   
       this.state = {
         type: Camera.Constants.Type.front,
+        faceDetected : false
       }
     }
 
   
     navigateToStartQuiz(faces){
-      if(faces.faces.length){
-        console.log("i am in")
+      if(faces.faces.length && !this.state.faceDetected){
+        this.setState({
+          faceDetected : true
+        })
         this.props.navigation.navigate('startQuiz')
       }
     }
